@@ -1,0 +1,27 @@
+entity Todo {
+    name String required,
+    content String,
+    done Boolean
+}
+
+entity Tag {
+    name String required
+}
+
+relationship ManyToOne {
+    Todo{login} to User with builtInEntity
+    Tag{parent} to Tag
+}
+
+relationship OneToMany {
+    Todo to Tag
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
